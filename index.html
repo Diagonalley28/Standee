@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security Event</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #0a0e27;
+            color: #00ff41;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+
+        /* Particle Canvas */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Page Container */
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            z-index: 10;
+            padding: 40px 20px;
+        }
+
+        .page.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Adjust Day 1 and Day 2 to position content lower */
+        #day1, #day2 {
+            justify-content: flex-start;
+            padding-top: 250px; /* Push content further down */
+        }
+
+        /* Logo */
+        .page-logo {
+            width: 550px;
+            height: auto;
+            margin-bottom: 30px;
+            max-width: 90%;
+        }
+
+        /* Bot Image on Home Page */
+        .bot-image {
+            width: 250px;
+            height: auto;
+            margin: 20px 0;
+            max-width: 80%;
+            animation: bot-pulse 5s infinite;
+        }
+
+        /* Bot Image on Days Page (Larger) */
+        .bot-image-days {
+            width: 600px;
+            height: auto;
+            margin: 20px 0;
+            max-width: 80%;
+            animation: bot-pulse 5s infinite;
+        }
+
+        /* Bot Image in Bottom-Right Corner on Day 1 and Day 2 */
+        .bot-image-corner {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 350px;
+            height: auto;
+            max-width: 80%;
+            animation: bot-pulse 5s infinite;
+            z-index: 100;
+        }
+
+        @keyframes bot-pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Home Icon: repositioned to top-left */
+        .home-icon {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 255, 65, 0.1);
+            border: 2px solid #00ff41;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+        }
+
+        .home-icon svg {
+            width: 36px;
+            height: 36px;
+            fill: #00ff41;
+        }
+
+        .home-icon.hidden {
+            display: none;
+        }
+
+        /* Back Button: Positioned top-right */
+        .back-button {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            padding: 25px 60px;
+            font-size: 24px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: #00ff41;
+            background: rgba(0, 255, 65, 0.05);
+            border: 2px solid #00ff41;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            z-index: 100;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+            display: none;
+        }
+
+        .back-button.active {
+            display: block;
+        }
+
+        /* Buttons */
+        .cyber-button {
+            position: relative;
+            padding: 50px 120px;
+            font-size: 34px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: #00ff41;
+            background: rgba(0, 255, 65, 0.05);
+            border: 2px solid #00ff41;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+        }
+
+        /* Main Click Button */
+        .main-button {
+            font-size: 32px;
+            padding: 30px 80px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 50px rgba(0, 255, 65, 0.8);
+            }
+        }
+
+        /* Title */
+        .page-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 45px;
+            font-weight: 900;
+            margin-bottom: 40px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            background: linear-gradient(90deg, #00ff41, #00d4ff, #00ff41);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s linear infinite;
+            text-shadow: 0 0 30px rgba(0, 255, 65, 0.5);
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* Speaker Cards */
+        .speakers-container {
+            width: 100%;
+            max-width: 600px;
+            height: 70vh;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .speaker-card {
+            background: rgba(10, 14, 39, 0.8);
+            border: 2px solid #00ff41;
+            padding: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            gap: 20px;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+        }
+
+        .speaker-image {
+            width: 120px;
+            height: 120px;
+            min-width: 120px;
+            border: 2px solid #00ff41;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+        }
+
+        .speaker-info h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            color: #00ff41;
+            margin-bottom: 8px;
+        }
+
+        .speaker-info p {
+            color: #00d4ff;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Agenda Items */
+        .agenda-container {
+            width: 100%;
+            max-width: 600px;
+            height: 70vh;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .agenda-item {
+            background: rgba(10, 14, 39, 0.8);
+            border-left: 4px solid #00ff41;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+        }
+
+        .agenda-time {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20px;
+            color: #00ff41;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .agenda-title {
+            font-size: 22px;
+            color: #00d4ff;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .agenda-description {
+            color: #7effad;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Scrollbar Styling */
+        .speakers-container::-webkit-scrollbar,
+        .agenda-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .speakers-container::-webkit-scrollbar-track,
+        .agenda-container::-webkit-scrollbar-track {
+            background: rgba(0, 255, 65, 0.1);
+        }
+
+        .speakers-container::-webkit-scrollbar-thumb,
+        .agenda-container::-webkit-scrollbar-thumb {
+            background: #00ff41;
+            border-radius: 4px;
+        }
+
+        /* Button Container */
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Grid Effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ============================================ */
+        /* RESPONSIVE MEDIA QUERIES */
+        /* ============================================ */
+
+        /* Tablets and Medium Screens (Portrait) */
+        @media screen and (max-width: 1024px) {
+            .page-logo {
+                width: 400px;
+            }
+
+            .page-title {
+                font-size: 36px;
+                letter-spacing: 3px;
+            }
+
+            .cyber-button {
+                padding: 40px 100px;
+                font-size: 20px;
+            }
+
+            .main-button {
+                font-size: 26px;
+                padding: 25px 70px;
+            }
+
+            .bot-image {
+                width: 225px;
+            }
+
+            .bot-image-days {
+                width: 450px;
+            }
+
+            .bot-image-corner {
+                width: 225px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .speakers-container,
+            .agenda-container {
+                max-width: 550px;
+                height: 65vh;
+            }
+
+            .back-button {
+                top: 30px;
+                right: 30px;
+                padding: 20px 50px;
+                font-size: 20px;
+            }
+
+            .home-icon {
+                top: 20px;
+                left: 20px;
+                width: 60px;
+                height: 60px;
+            }
+
+            .home-icon svg {
+                width: 28px;
+                height: 28px;
+            }
+
+            #day1, #day2 {
+                padding-top: 200px; /* Adjust for smaller screens */
+            }
+        }
+
+        /* Small Tablets and Large Phones (Landscape) */
+        @media screen and (max-width: 768px) {
+            .page {
+                padding: 30px 15px;
+            }
+
+            .page-logo {
+                width: 300px;
+                margin-bottom: 20px;
+            }
+
+            .page-title {
+                font-size: 28px;
+                letter-spacing: 2px;
+                margin-bottom: 30px;
+            }
+
+            .cyber-button {
+                padding: 30px 70px;
+                font-size: 18px;
+                letter-spacing: 2px;
+                margin: 10px;
+            }
+
+            .main-button {
+                font-size: 22px;
+                padding: 20px 50px;
+            }
+
+            .bot-image {
+                width: 180px;
+            }
+
+            .bot-image-days {
+                width: 375px;
+            }
+
+            .bot-image-corner {
+                width: 180px;
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .home-icon {
+                width: 60px;
+                height: 60px;
+                top: 20px;
+                left: 20px;
+            }
+
+            .home-icon svg {
+                width: 28px;
+                height: 28px;
+            }
+
+            .speakers-container,
+            .agenda-container {
+                max-width: 90%;
+                height: 60vh;
+                padding: 15px;
+            }
+
+            .speaker-card {
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .speaker-image {
+                width: 100px;
+                height: 100px;
+                min-width: 100px;
+            }
+
+            .speaker-info h3 {
+                font-size: 20px;
+            }
+
+            .speaker-info p {
+                font-size: 14px;
+            }
+
+            .agenda-item {
+                padding: 20px;
+            }
+
+            .agenda-time {
+                font-size: 18px;
+            }
+
+            .agenda-title {
+                font-size: 19px;
+            }
+
+            .agenda-description {
+                font-size: 14px;
+            }
+
+            .back-button {
+                top: 30px;
+                right: 30px;
+                padding: 18px 45px;
+                font-size: 18px;
+            }
+
+            #day1, #day2 {
+                padding-top: 150px; /* Adjust for smaller screens */
+            }
+        }
+
+        /* Mobile Phones (Portrait) */
+        @media screen and (max-width: 480px) {
+            .page {
+                padding: 20px 10px;
+            }
+
+            .page-logo {
+                width: 220px;
+                margin-bottom: 15px;
+            }
+
+            .page-title {
+                font-size: 22px;
+                letter-spacing: 1px;
+                margin-bottom: 20px;
+                padding: 0 10px;
+            }
+
+            .cyber-button {
+                padding: 20px 40px;
+                font-size: 16px;
+                letter-spacing: 1px;
+                margin: 8px;
+            }
+
+            .main-button {
+                font-size: 18px;
+                padding: 18px 40px;
+            }
+
+            .bot-image {
+                width: 150px;
+            }
+
+            .bot-image-days {
+                width: 300px;
+            }
+
+            .bot-image-corner {
+                width: 150px;
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .home-icon {
+                width: 50px;
+                height: 50px;
+                top: 15px;
+                left: 15px;
+            }
+
+            .home-icon svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .speakers-container,
+            .agenda-container {
+                max-width: 95%;
+                height: 55vh;
+                padding: 10px;
+            }
+
+            .speaker-card {
+                flex-direction: column;
+                padding: 15px;
+                gap: 15px;
+                align-items: center;
+                text-align: center;
+            }
+
+            .speaker-image {
+                width: 120px;
+                height: 120px;
+                min-width: 120px;
+            }
+
+            .speaker-info h3 {
+                font-size: 18px;
+            }
+
+            .speaker-info p {
+                font-size: 13px;
+            }
+
+            .agenda-item {
+                padding: 15px;
+            }
+
+            .agenda-time {
+                font-size: 16px;
+            }
+
+            .agenda-title {
+                font-size: 17px;
+            }
+
+            .agenda-description {
+                font-size: 13px;
+            }
+
+            .back-button {
+                top: 30px;
+                right: 30px;
+                padding: 15px 40px;
+                font-size: 16px;
+            }
+
+            #day1, #day2 {
+                padding-top: 120px; /* Adjust for smaller screens */
+            }
+        }
+
+        /* Very Small Screens */
+        @media screen and (max-width: 360px) {
+            .page-logo {
+                width: 180px;
+            }
+
+            .page-title {
+                font-size: 18px;
+            }
+
+            .cyber-button {
+                padding: 18px 35px;
+                font-size: 14px;
+            }
+
+            .main-button {
+                font-size: 16px;
+                padding: 16px 35px;
+            }
+
+            .bot-image {
+                width: 120px;
+            }
+
+            .bot-image-days {
+                width: 240px;
+            }
+
+            .bot-image-corner {
+                width: 120px;
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .speakers-container,
+            .agenda-container {
+                height: 50vh;
+            }
+
+            .speaker-info h3 {
+                font-size: 16px;
+            }
+
+            .speaker-info p {
+                font-size: 12px;
+            }
+
+            .agenda-time {
+                font-size: 14px;
+            }
+
+            .agenda-title {
+                font-size: 15px;
+            }
+
+            .agenda-description {
+                font-size: 12px;
+            }
+
+            .back-button {
+                top: 30px;
+                right: 30px;
+                padding: 12px 35px;
+                font-size: 14px;
+            }
+
+            #day1, #day2 {
+                padding-top: 100px; /* Adjust for very small screens */
+            }
+        }
+
+        /* Large Standee Displays / TV Screens */
+        @media screen and (min-width: 1920px) {
+            .page-logo {
+                width: 700px;
+            }
+
+            .page-title {
+                font-size: 60px;
+            }
+
+            .cyber-button {
+                padding: 60px 150px;
+                font-size: 30px;
+            }
+
+            .main-button {
+                font-size: 40px;
+                padding: 40px 100px;
+            }
+
+            .bot-image {
+                width: 375px;
+            }
+
+            .bot-image-days {
+                width: 750px;
+            }
+
+            .bot-image-corner {
+                width: 375px;
+            }
+
+            .speakers-container,
+            .agenda-container {
+                max-width: 900px;
+            }
+
+            .speaker-card {
+                padding: 30px;
+            }
+
+            .speaker-image {
+                width: 180px;
+                height: 180px;
+                min-width: 180px;
+            }
+
+            .speaker-info h3 {
+                font-size: 32px;
+            }
+
+            .speaker-info p {
+                font-size: 22px;
+            }
+
+            .agenda-item {
+                padding: 35px;
+            }
+
+            .agenda-time {
+                font-size: 28px;
+            }
+
+            .agenda-title {
+                font-size: 30px;
+            }
+
+            .agenda-description {
+                font-size: 22px;
+            }
+
+            .back-button {
+                top: 30px;
+                right: 30px;
+                padding: 30px 70px;
+                font-size: 28px;
+            }
+
+            .home-icon {
+                width: 90px;
+                height: 90px;
+                left: 40px;
+            }
+
+            .home-icon svg {
+                width: 40px;
+                height: 40px;
+            }
+
+            #day1, #day2 {
+                padding-top: 300px; /* Adjust for larger screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles Canvas -->
+    <canvas id="particles"></canvas>
+
+    <!-- Home Icon -->
+    <div class="home-icon hidden" onclick="goToHome()">
+        <svg viewBox="0 0 24 24">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+    </div>
+
+    <!-- Back Button -->
+    <button class="back-button" onclick="goToPage('days')">Back</button>
+
+    <!-- Home Page -->
+    <div class="page active" id="home">
+        <img src="static/logo1.png" alt="Cyber Security Summit Logo" class="page-logo">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1 class="page-title">HACKING & CYBER SECURITY BRIEFING</h1>
+        <img src="static/bot2.png" alt="Cyber Bot Image" class="bot-image">
+        <br>
+        <br>
+        <button class="cyber-button main-button" onclick="goToPage('days')">Click Here</button>
+    </div>
+
+    <!-- Days Page -->
+    <div class="page" id="days">
+        <img src="static/logo1.png" alt="Cyber Security Summit Logo" class="page-logo">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1 class="page-title">Select Day</h1>
+        <br>
+        <div class="button-container">
+            <button class="cyber-button" onclick="goToPage('day1')">Day 1</button>
+            <button class="cyber-button" onclick="goToPage('day2')">Day 2</button>
+        </div>
+        <img src="static/bot4.png" alt="Cyber Bot Image" class="bot-image-days">
+    </div>
+
+    <!-- Day 1 - Speakers Page -->
+    <div class="page" id="day1">
+        <img src="static/logo1.png" alt="Cyber Security Summit Logo" class="page-logo">
+        <br>
+        <br>
+        <br>
+        <h1 class="page-title">Day 1 - Speakers</h1>
+        <br>
+        <br>
+        <br>
+        <div class="speakers-container">
+            <div class="speaker-card">
+                <img src="static/1.jpg" alt="Alex Kensington" class="speaker-image">
+                <div class="speaker-info">
+                    <h3>Alex Kensington</h3>
+                    <p>Chief Security Officer at CyberCore Inc. Specializing in penetration testing and vulnerability assessment with 15+ years of experience in securing enterprise systems.</p>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <img src="static/2.jpg" alt="Sarah Mitchell" class="speaker-image">
+                <div class="speaker-info">
+                    <h3>Sarah Mitchell</h3>
+                    <p>Ethical Hacker & Security Researcher. Known for discovering critical zero-day vulnerabilities in major platforms. TEDx speaker on cyber warfare.</p>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <img src="static/3.jpg" alt="Raj Johnson" class="speaker-image">
+                <div class="speaker-info">
+                    <h3>Raj Johnson</h3>
+                    <p>Blockchain Security Expert and Cryptography Specialist. Author of "Securing the Decentralized Future" and advisor to multiple Fortune 500 companies.</p>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <img src="static/4.jpg" alt="Linda Chen" class="speaker-image">
+                <div class="speaker-info">
+                    <h3>Linda Chen</h3>
+                    <p>AI Security Architect at TechGuard Solutions. Leading research in machine learning-based threat detection and autonomous security systems.</p>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <img src="static/5.jpg" alt="Marcus Peterson" class="speaker-image">
+                <div class="speaker-info">
+                    <h3>Marcus Peterson</h3>
+                    <p>Former FBI Cybercrime Investigator. Now consulting on digital forensics and incident response strategies for global organizations.</p>
+                </div>
+            </div>
+        </div>
+        <img src="static/bot3.png" alt="Cyber Bot Corner Image" class="bot-image-corner">
+    </div>
+
+    <!-- Day 2 - Agenda Page -->
+    <div class="page" id="day2">
+        <img src="static/logo1.png" alt="Cyber Security Summit Logo" class="page-logo">
+        <br>
+        <br>
+        <br>
+        <h1 class="page-title">Day 2 - Agenda</h1>
+        <br>
+        <br>
+        <br>
+        <div class="agenda-container">
+            <div class="agenda-item">
+                <div class="agenda-time">09:00 AM - 10:30 AM</div>
+                <div class="agenda-title">Opening Keynote: The Future of Cyber Threats</div>
+                <div class="agenda-description">Explore emerging threat landscapes including AI-powered attacks, quantum computing challenges, and the evolution of ransomware.</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">10:45 AM - 12:00 PM</div>
+                <div class="agenda-title">Workshop: Advanced Penetration Testing</div>
+                <div class="agenda-description">Hands-on session covering latest penetration testing methodologies, tools, and techniques for red team operations.</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">01:00 PM - 02:30 PM</div>
+                <div class="agenda-title">Panel Discussion: Zero Trust Architecture</div>
+                <div class="agenda-description">Industry leaders discuss implementing zero trust security models in modern enterprise environments and cloud infrastructure.</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">02:45 PM - 04:00 PM</div>
+                <div class="agenda-title">Technical Deep Dive: Securing IoT Ecosystems</div>
+                <div class="agenda-description">Comprehensive analysis of IoT vulnerabilities, best practices for device security, and emerging standards in connected systems.</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">04:15 PM - 05:30 PM</div>
+                <div class="agenda-title">Closing Session: Building Cyber Resilience</div>
+                <div class="agenda-description">Strategic approaches to organizational cyber resilience, incident recovery planning, and creating security-aware cultures.</div>
+            </div>
+        </div>
+        <img src="static/bot3.png" alt="Cyber Bot Corner Image" class="bot-image-corner">
+    </div>
+
+    <script>
+        // Page Navigation
+        function goToPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            const targetPage = document.getElementById(pageId);
+            targetPage.classList.add('active');
+            
+            // Show/hide home icon
+            const homeIcon = document.querySelector('.home-icon');
+            if (pageId === 'home') {
+                homeIcon.classList.add('hidden');
+            } else {
+                homeIcon.classList.remove('hidden');
+            }
+
+            // Show/hide back button
+            const backButton = document.querySelector('.back-button');
+            if (pageId === 'day1' || pageId === 'day2') {
+                backButton.classList.add('active');
+            } else {
+                backButton.classList.remove('active');
+            }
+        }
+
+        function goToHome() {
+            goToPage('home');
+        }
+
+        // Particle System
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 100;
+        const connectionDistance = 150;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 255, 65, 0.6)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionDistance) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(0, 255, 65, ${0.2 * (1 - distance / connectionDistance)})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[j].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
