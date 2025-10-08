@@ -71,6 +71,23 @@
             max-width: 90%;
         }
 
+        /* LIWA Title */
+        .liwa-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 80px;
+            font-weight: 900;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            background: linear-gradient(90deg, #00ff41, #00d4ff, #00ff41);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s linear infinite;
+            text-shadow: 0 0 30px rgba(0, 255, 65, 0.5);
+            margin-bottom: 20px;
+        }
+
         /* Bot Image on Home Page */
         .bot-image {
             width: 250px;
@@ -220,7 +237,7 @@
         /* Speaker Cards */
         .speakers-container {
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             height: 70vh;
             overflow-y: auto;
             padding: 20px;
@@ -262,8 +279,8 @@
         /* Agenda Items */
         .agenda-container {
             width: 100%;
-            max-width: 600px;
-            height: 70vh;
+            max-width: 1100px;
+            height: 55vh;
             overflow-y: auto;
             padding: 20px;
         }
@@ -286,15 +303,23 @@
 
         .agenda-title {
             font-size: 22px;
-            color: #00d4ff;
-            margin-bottom: 8px;
             font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #00ff41, #00d4ff, #00ff41);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s linear infinite;
+            text-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
         }
 
         .agenda-description {
-            color: #7effad;
-            font-size: 16px;
+            color: #00d4ff;
+            font-size: 18px;
             line-height: 1.5;
+            font-weight: 700;
         }
 
         /* Scrollbar Styling */
@@ -352,6 +377,11 @@
                 letter-spacing: 3px;
             }
 
+            .liwa-title {
+                font-size: 60px;
+                letter-spacing: 6px;
+            }
+
             .cyber-button {
                 padding: 40px 100px;
                 font-size: 20px;
@@ -378,8 +408,8 @@
 
             .speakers-container,
             .agenda-container {
-                max-width: 550px;
-                height: 65vh;
+                max-width: 1000px;
+                height: 50vh;
             }
 
             .back-button {
@@ -404,6 +434,15 @@
             #day1, #day2 {
                 padding-top: 200px; /* Adjust for smaller screens */
             }
+
+            .agenda-description {
+                font-size: 16px;
+            }
+
+            .agenda-title {
+                font-size: 20px;
+                letter-spacing: 1px;
+            }
         }
 
         /* Small Tablets and Large Phones (Landscape) */
@@ -421,6 +460,11 @@
                 font-size: 28px;
                 letter-spacing: 2px;
                 margin-bottom: 30px;
+            }
+
+            .liwa-title {
+                font-size: 48px;
+                letter-spacing: 4px;
             }
 
             .cyber-button {
@@ -464,7 +508,7 @@
             .speakers-container,
             .agenda-container {
                 max-width: 90%;
-                height: 60vh;
+                height: 45vh;
                 padding: 15px;
             }
 
@@ -500,7 +544,7 @@
             }
 
             .agenda-description {
-                font-size: 14px;
+                font-size: 15px;
             }
 
             .back-button {
@@ -531,6 +575,11 @@
                 letter-spacing: 1px;
                 margin-bottom: 20px;
                 padding: 0 10px;
+            }
+
+            .liwa-title {
+                font-size: 36px;
+                letter-spacing: 3px;
             }
 
             .cyber-button {
@@ -574,7 +623,7 @@
             .speakers-container,
             .agenda-container {
                 max-width: 95%;
-                height: 55vh;
+                height: 40vh;
                 padding: 10px;
             }
 
@@ -613,7 +662,7 @@
             }
 
             .agenda-description {
-                font-size: 13px;
+                font-size: 14px;
             }
 
             .back-button {
@@ -636,6 +685,11 @@
 
             .page-title {
                 font-size: 18px;
+            }
+
+            .liwa-title {
+                font-size: 30px;
+                letter-spacing: 2px;
             }
 
             .cyber-button {
@@ -664,7 +718,7 @@
 
             .speakers-container,
             .agenda-container {
-                height: 50vh;
+                height: 35vh;
             }
 
             .speaker-info h3 {
@@ -684,7 +738,7 @@
             }
 
             .agenda-description {
-                font-size: 12px;
+                font-size: 13px;
             }
 
             .back-button {
@@ -707,6 +761,11 @@
 
             .page-title {
                 font-size: 60px;
+            }
+
+            .liwa-title {
+                font-size: 100px;
+                letter-spacing: 10px;
             }
 
             .cyber-button {
@@ -733,7 +792,8 @@
 
             .speakers-container,
             .agenda-container {
-                max-width: 900px;
+                max-width: 1300px;
+                height: 65vh;
             }
 
             .speaker-card {
@@ -767,7 +827,7 @@
             }
 
             .agenda-description {
-                font-size: 22px;
+                font-size: 24px;
             }
 
             .back-button {
@@ -814,6 +874,8 @@
         <br>
         <br>
         <br>
+        <h2 class="liwa-title">LIWA</h2>
+        <br>
         <br>
         <br>
         <h1 class="page-title">HACKING & CYBER SECURITY BRIEFING</h1>
@@ -839,65 +901,103 @@
         <img src="static/bot4.png" alt="Cyber Bot Image" class="bot-image-days">
     </div>
 
-    <!-- Day 1 - Speakers Page -->
+    <!-- Day 1 - Agenda Page -->
     <div class="page" id="day1">
         <img src="static/logo1.png" alt="Cyber Security Summit Logo" class="page-logo">
         <br>
         <br>
         <br>
+        <h1 class="page-title">Day 1 - Agenda</h1>
         <br>
         <br>
         <br>
-        <h1 class="page-title">Day 1 - Speakers</h1>
-        <br>
-        <br>
-        <br>
-        <div class="speakers-container">
-            <div class="speaker-card">
-                <img src="static/1.jpg" alt="Alex Kensington" class="speaker-image">
-                <div class="speaker-info">
-                    <h3>Alex Kensington</h3>
-                    <p>Chief Security Officer at CyberCore Inc. Specializing in penetration testing and vulnerability assessment with 15+ years of experience in securing enterprise systems.</p>
-                </div>
+        <div class="agenda-container">
+            <div class="agenda-item">
+                <div class="agenda-time">08:30 AM</div>
+                <div class="agenda-title">Registration Counter Opens</div>
+                <div class="agenda-description"></div>
             </div>
-            <div class="speaker-card">
-                <img src="static/2.jpg" alt="Sarah Mitchell" class="speaker-image">
-                <div class="speaker-info">
-                    <h3>Sarah Mitchell</h3>
-                    <p>Ethical Hacker & Security Researcher. Known for discovering critical zero-day vulnerabilities in major platforms. TEDx speaker on cyber warfare.</p>
-                </div>
+            <div class="agenda-item">
+                <div class="agenda-time">09:30 AM - 10:39 AM</div>
+                <div class="agenda-title">Opening Ceremony and Keynote</div>
+                <div class="agenda-description"></div>
             </div>
-            <div class="speaker-card">
-                <img src="static/3.jpg" alt="Raj Johnson" class="speaker-image">
-                <div class="speaker-info">
-                    <h3>Raj Johnson</h3>
-                    <p>Blockchain Security Expert and Cryptography Specialist. Author of "Securing the Decentralized Future" and advisor to multiple Fortune 500 companies.</p>
-                </div>
+            <div class="agenda-item">
+                <div class="agenda-time">10:45 AM - 11:00 AM</div>
+                <div class="agenda-title">TEA BREAK</div>
+                <div class="agenda-description"></div>
             </div>
-            <div class="speaker-card">
-                <img src="static/4.jpg" alt="Linda Chen" class="speaker-image">
-                <div class="speaker-info">
-                    <h3>Linda Chen</h3>
-                    <p>AI Security Architect at TechGuard Solutions. Leading research in machine learning-based threat detection and autonomous security systems.</p>
-                </div>
+            <div class="agenda-item">
+                <div class="agenda-time">11:00 AM - 11:30 AM</div>
+                <div class="agenda-title">Cyber Crime : National Response</div>
+                <div class="agenda-description">By : Rajesh Kumar, CEO, Indian Cyber Crime Coordination Centre (I4C)</div>
             </div>
-            <div class="speaker-card">
-                <img src="static/5.jpg" alt="Marcus Peterson" class="speaker-image">
-                <div class="speaker-info">
-                    <h3>Marcus Peterson</h3>
-                    <p>Former FBI Cybercrime Investigator. Now consulting on digital forensics and incident response strategies for global organizations.</p>
-                </div>
+            <div class="agenda-item">
+                <div class="agenda-time">11:30 AM - 12:00 PM</div>
+                <div class="agenda-title">Keynote</div>
+                <div class="agenda-description">By : Lt Gen MU Nair</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">12:00 PM - 12:19 PM</div>
+                <div class="agenda-title">Passive Radar Using Low Earth Orbit Satellites - Exploiting StarLink as Illumination for Target detection, classification and tracking</div>
+                <div class="agenda-description">By : Karan Sajnani and Jaden Furtado</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">12:19 PM - 12:40 PM</div>
+                <div class="agenda-title">Alarm rationalisation for digital cyber OT assets</div>
+                <div class="agenda-description">By : Srinivasan Hariharan</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">12:40 PM - 01:00 PM</div>
+                <div class="agenda-title">From Shadows to Sight: Defending Against Adversaries in Plain Sight</div>
+                <div class="agenda-description">By : Sunil Varkey</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">01:00 PM - 02:00 PM</div>
+                <div class="agenda-title">LUNCH BREAK</div>
+                <div class="agenda-description"></div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">02:00 PM - 02:30 PM</div>
+                <div class="agenda-title">Cybersecurity and it's importance in Space and Satellite Systems</div>
+                <div class="agenda-description">By : Chairman, VSSC</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">02:30 PM - 03:15 PM</div>
+                <div class="agenda-title">[PANEL] Sustainable Cybersecurity: (Environmental, Social, and Governance) ESG Meets Infosec</div>
+                <div class="agenda-description">Moderator : Dr. Prince Joseph<br>Panel Members :<br>Dr. Mahesh Kalyanaraman<br>Shiju Rawther<br>Chandra Sekhar<br>Sunil Varkey</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">03:15 PM - 03:30 PM</div>
+                <div class="agenda-title">TEA BREAK</div>
+                <div class="agenda-description"></div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">03:30 PM - 03:49 PM</div>
+                <div class="agenda-title">AI for predictive policing and efficient utilisation of resources</div>
+                <div class="agenda-description">By : Tarun Wig</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">03:49 PM - 04:30 PM</div>
+                <div class="agenda-title">[PANEL] Future of OT Security: AI, Digital Twins, and Predictive Threat Defense</div>
+                <div class="agenda-description">Moderator : Rajeev G S<br>Panel Members :<br>Abhishek K V<br>Ramesh Kumar Rajasekharan Pillai<br>Kishan Kendre<br>Sangeeth K M<br>Manjunath Pasupuleti</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">04:30 PM - 05:00 PM</div>
+                <div class="agenda-title">Weaponized Intelligence: When AI Goes on the Cyber Offense</div>
+                <div class="agenda-description">By : Jairam Ramesh, Director of Cyber Security, AIA Digital+ , Kuala Lumpur</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">05:00 PM - 05:30 PM</div>
+                <div class="agenda-title">“If you can’t beat them,co-create with them” Isha & Aisha — Human & AI in Harmony</div>
+                <div class="agenda-description">By : Dr. Isha Farha Quraishy</div>
             </div>
         </div>
-        <img src="static/bot3.png" alt="Cyber Bot Corner Image" class="bot-image-corner">
     </div>
 
     <!-- Day 2 - Agenda Page -->
     <div class="page" id="day2">
         <img src="static/logo1.png" alt="Cyber Security Summit Logo" class="page-logo">
-        <br>
-        <br>
-        <br>
         <br>
         <br>
         <br>
@@ -907,32 +1007,71 @@
         <br>
         <div class="agenda-container">
             <div class="agenda-item">
-                <div class="agenda-time">09:00 AM - 10:30 AM</div>
-                <div class="agenda-title">Opening Keynote: The Future of Cyber Threats</div>
-                <div class="agenda-description">Explore emerging threat landscapes including AI-powered attacks, quantum computing challenges, and the evolution of ransomware.</div>
+                <div class="agenda-time">09:30 AM - 09:49 AM</div>
+                <div class="agenda-title">[KEY NOTE] Defending The Future in an Uncertain World: AI, Risk, and Resilience</div>
+                <div class="agenda-description">By : Nathan Hamiel</div>
             </div>
             <div class="agenda-item">
-                <div class="agenda-time">10:45 AM - 12:00 PM</div>
-                <div class="agenda-title">Workshop: Advanced Penetration Testing</div>
-                <div class="agenda-description">Hands-on session covering latest penetration testing methodologies, tools, and techniques for red team operations.</div>
+                <div class="agenda-time">09:49 AM - 10:09 AM</div>
+                <div class="agenda-title">Algorithmic Anarchy: Decoding Nepal protests and the role of social media platforms.</div>
+                <div class="agenda-description">By : Brijesh Singh IPS</div>
             </div>
             <div class="agenda-item">
-                <div class="agenda-time">01:00 PM - 02:30 PM</div>
-                <div class="agenda-title">Panel Discussion: Zero Trust Architecture</div>
-                <div class="agenda-description">Industry leaders discuss implementing zero trust security models in modern enterprise environments and cloud infrastructure.</div>
+                <div class="agenda-time">10:09 AM - 10:39 AM</div>
+                <div class="agenda-title">A Rant... Period - All cyber security mistakes need not be made by you !</div>
+                <div class="agenda-description">By : Rohit Srivastwa and Aalok Karnik</div>
             </div>
             <div class="agenda-item">
-                <div class="agenda-time">02:45 PM - 04:00 PM</div>
-                <div class="agenda-title">Technical Deep Dive: Securing IoT Ecosystems</div>
-                <div class="agenda-description">Comprehensive analysis of IoT vulnerabilities, best practices for device security, and emerging standards in connected systems.</div>
+                <div class="agenda-time">10:39 AM - 11:15 AM</div>
+                <div class="agenda-title">Silent Sigma: Unraveling Iranian APT’s 0-Day Warfare and Covert C2</div>
+                <div class="agenda-description">By : Christopher Dio Chavez<br>Chief Hacking and Defense Officer (CHRO)<br>RADAR IT CyberField</div>
             </div>
             <div class="agenda-item">
-                <div class="agenda-time">04:15 PM - 05:30 PM</div>
-                <div class="agenda-title">Closing Session: Building Cyber Resilience</div>
-                <div class="agenda-description">Strategic approaches to organizational cyber resilience, incident recovery planning, and creating security-aware cultures.</div>
+                <div class="agenda-time">11:15 AM - 11:30 AM</div>
+                <div class="agenda-title">TEA BREAK</div>
+                <div class="agenda-description"></div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">11:30 AM - 12:15 PM</div>
+                <div class="agenda-title">[PANEL] Countering the Deep State Narrative: Transparency, Trust, and Cyber Resilience</div>
+                <div class="agenda-description">Moderator : Antriksh Shah<br>Panel Members :<br>Lt Gen MU Nair<br>Ankit Ashokan IPS<br>Jairam Ramesh<br>Christopher Dio Chavez</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">12:15 PM - 01:00 PM</div>
+                <div class="agenda-title">[FIRESIDE CHAT] - Future of Security</div>
+                <div class="agenda-description">By : Mithun Babu and Sheshadri MV</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">01:00 PM - 02:00 PM</div>
+                <div class="agenda-title">LUNCH BREAK</div>
+                <div class="agenda-description"></div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">02:00 PM - 02:45 PM</div>
+                <div class="agenda-title">[PANEL] Cybersecurity Metrics That Matter: From Investment to Impact</div>
+                <div class="agenda-description">Moderator : Jacxine Fernandez<br>Panel Members :<br>Rajesh Thapar<br>TBA<br>Jason Joseph<br>V V Jacob</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">02:45 PM - 03:09 PM</div>
+                <div class="agenda-title">TEA BREAK</div>
+                <div class="agenda-description"></div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">03:09 PM - 03:30 PM</div>
+                <div class="agenda-title">Closing Note (Keynote) 1 - The future of Cybersecurity</div>
+                <div class="agenda-description">By : Navin Kumar Singh IPS, National Cybersecurity Coordinator (NCSC)</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">03:30 PM - 03:49 PM</div>
+                <div class="agenda-title">Closing Note (Keynote) 2</div>
+                <div class="agenda-description">By : Rear Admiral Sanjay Sachdeva, NM<br>Director General, Defence Cyber Agency</div>
+            </div>
+            <div class="agenda-item">
+                <div class="agenda-time">04:00 PM - 04:45 PM</div>
+                <div class="agenda-title">Closing Ceremony</div>
+                <div class="agenda-description"></div>
             </div>
         </div>
-        <img src="static/bot3.png" alt="Cyber Bot Corner Image" class="bot-image-corner">
     </div>
 
     <script>
